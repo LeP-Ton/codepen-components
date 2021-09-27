@@ -1,1 +1,2 @@
-console.log("Hello World!");
+import render  from './tips/case/template.js'
+render()
