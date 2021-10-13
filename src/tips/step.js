@@ -43,6 +43,7 @@ export default class Step extends HTMLElement {
     this.render();
   }
   render() {
-    this.$step.innerHTML = this.text;
+    this.$step.setAttribute("text", this.text);
+    this.$step.innerHTML = this.innerHTML;
   }
 }

@@ -1,0 +1,34 @@
+
+  case,
+  step {
+    display: block;
+  }
+  case {
+    border-bottom: 2px solid;
+    counter-increment: case-value;
+  }
+  case::before {
+    display: block;
+    margin-top: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    content: "例" counter(case-value) "：" attr(data-text);
+  }
+  step::before {
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+    content: "步骤" counter(step-value) "：" attr(data-text);
+  }
+  step {
+    margin: 0 50px;
+    border-bottom: 1px solid;
+    counter-increment: step-value;
+  }
+  step:last-child {
+    border-bottom: none;
+  }
+  test {
+    display: block;
+    margin: 20px 0;
+  }
