@@ -23,8 +23,9 @@ export default class Case extends HTMLElement {
     this.shadow = this.attachShadow({ mode: "closed" });
     this.shadow.appendChild(template.content.cloneNode(true));
     this.$case = this.shadow.querySelector("case");
-    this.caseNodeList=document.getElementsByTagName("codepen-case");  
-    this.caseIndex=Array.prototype.slice.call(this.caseNodeList).indexOf(this)+1;
+    this.caseNodeList = document.getElementsByTagName("codepen-case");
+    this.caseIndex =
+      Array.prototype.slice.call(this.caseNodeList).indexOf(this) + 1;
   }
   get text() {
     return this.getAttribute("text");
@@ -42,6 +43,5 @@ export default class Case extends HTMLElement {
     this.$case.setAttribute("text", this.text);
     this.$case.setAttribute("caseIndex", this.caseIndex);
     this.$case.innerHTML = this.innerHTML;
-    
   }
 }

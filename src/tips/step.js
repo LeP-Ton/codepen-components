@@ -9,7 +9,7 @@ template.innerHTML = `
       display: block;
       margin-top: 20px;
       font-size: 20px;
-      content: "步骤" counter(step-value) "：" attr(text);
+      content: "步骤" attr(stepIndex) "：" attr(text);
     }
     step {
       margin: 0 50px;
@@ -29,6 +29,10 @@ export default class Step extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: "closed" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this.$step = this._shadowRoot.querySelector("step");
+    this.stepNodeList = document.getElementsByTagName("codepen-step");
+    this.stepIndex =
+      Array.prototype.slice.call(this.stepNodeList).indexOf(this) + 1;
+      console.log("---------",this.stepNodeList);
   }
   get text() {
     return this.getAttribute("text");
@@ -44,6 +48,7 @@ export default class Step extends HTMLElement {
   }
   render() {
     this.$step.setAttribute("text", this.text);
+    this.$step.setAttribute("stepIndex", this.stepIndex);
     this.$step.innerHTML = this.innerHTML;
   }
 }
