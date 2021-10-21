@@ -29,10 +29,9 @@ export default class Step extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: "closed" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this.$step = this._shadowRoot.querySelector("step");
-    this.stepNodeList = document.getElementsByTagName("codepen-step");
+    this.stepNodeList = this.parentNode.getElementsByTagName("codepen-step");
     this.stepIndex =
       Array.prototype.slice.call(this.stepNodeList).indexOf(this) + 1;
-      console.log("---------",this.stepNodeList);
   }
   get text() {
     return this.getAttribute("text");
