@@ -9,7 +9,7 @@ template.innerHTML = `
       display: block;
       margin-top: 20px;
       font-size: 20px;
-      content: "步骤" attr(stepIndex) "：" attr(text);
+      content: attr(stepPrefix) attr(stepIndex) "：" attr(text);
     }
     step {
       margin: 0 50px;
@@ -39,14 +39,21 @@ export default class Step extends HTMLElement {
   set text(value) {
     this.setAttribute("text", value);
   }
+  get stepPrefix(){
+    return this.getAttribute("stepPrefix");
+  }
+  set stepPrefix(value){
+    this.setAttribute("stepPrefix",value);
+  }
   static get observedAttributes() {
-    return ["text"];
+    return ["text","stepPrefix"];
   }
   attributeChangedCallback(name, oldVal, newVal) {
     this.render();
   }
   render() {
     this.$step.setAttribute("text", this.text);
+    this.$step.setAttribute("stepPrefix", this.stepPrefix||"步骤");
     this.$step.setAttribute("stepIndex", this.stepIndex);
     this.$step.innerHTML = this.innerHTML;
   }
