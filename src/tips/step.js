@@ -30,8 +30,7 @@ export default class Step extends HTMLElement {
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this.$step = this._shadowRoot.querySelector("step");
     this.stepNodeList = this.parentNode.getElementsByTagName("codepen-step");
-    this.stepIndex =
-      Array.prototype.slice.call(this.stepNodeList).indexOf(this) + 1;
+    this.indexShow==="true"||this.indexShow===null?this.stepIndex = Array.prototype.slice.call(this.stepNodeList).indexOf(this) + 1:this.stepIndex='';
   }
   get text() {
     return this.getAttribute("text");
@@ -45,6 +44,12 @@ export default class Step extends HTMLElement {
   set stepPrefix(value){
     this.setAttribute("stepPrefix",value);
   }
+  get indexShow(){
+    return this.getAttribute("indexShow");
+  }
+  set indexShow(value){
+    this.setAttribute("indexShow",value);
+  }
   static get observedAttributes() {
     return ["text","stepPrefix"];
   }
@@ -55,6 +60,7 @@ export default class Step extends HTMLElement {
     this.$step.setAttribute("text", this.text);
     this.$step.setAttribute("stepPrefix", this.stepPrefix||"步骤");
     this.$step.setAttribute("stepIndex", this.stepIndex);
+    this.$step.setAttribute("indexShow",this.indexShow);
     this.$step.innerHTML = this.innerHTML;
   }
 }
