@@ -20,7 +20,7 @@ template.innerHTML = `
 export default class Case extends HTMLElement {
   constructor() {
     super();
-    this.shadow = this.attachShadow({ mode: "closed" });
+    this.shadow = this.attachShadow({ mode: "open" });
     this.shadow.appendChild(template.content.cloneNode(true));
     this.$case = this.shadow.querySelector("case");
     this.caseNodeList = document.getElementsByTagName("codepen-case");

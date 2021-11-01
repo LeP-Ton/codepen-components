@@ -26,7 +26,7 @@ export default class Step extends HTMLElement {
   constructor() {
     super();
 
-    this._shadowRoot = this.attachShadow({ mode: "closed" });
+    this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this.$step = this._shadowRoot.querySelector("step");
     this.stepNodeList = this.parentNode.getElementsByTagName("codepen-step");

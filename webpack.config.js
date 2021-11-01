@@ -25,7 +25,8 @@ const config = {
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
 
         new HtmlWebpackPlugin({
-            template:'./src/index.html'
+            template:'./src/index.html',
+            minify: false
         })
     ],
     module: {
