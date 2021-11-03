@@ -3,10 +3,7 @@ template.innerHTML = `
     <style>
     case{
       display: block;
-    }
-    case {
       border-bottom: 2px solid;
-      // counter-increment: case-value;
     }
     case::before {
       display: block;
@@ -14,7 +11,8 @@ template.innerHTML = `
       font-size: 30px;
       font-weight: bold;
       content: attr(casePrefix) attr(caseIndex) "：" attr(text);
-    }</style>
+    }
+    </style>
     <case></case>
 `;
 export default class Case extends HTMLElement {
@@ -55,7 +53,7 @@ export default class Case extends HTMLElement {
   }
   render() {
     this.$case.setAttribute("text", this.text);
-    this.$case.setAttribute("casePrefix", this.casePrefix||"例");
+    this.$case.setAttribute("casePrefix", this.casePrefix||"case");
     this.$case.setAttribute("caseIndex", this.caseIndex);
     this.$case.setAttribute("indexShow",this.indexShow);
     this.$case.innerHTML = this.innerHTML;
