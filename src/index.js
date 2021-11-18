@@ -5,7 +5,7 @@
 import tips from './tips/tips.js';
 // import 'highlight.js/styles/codepen-embed.css';
 import hljs from 'highlight.js';
-import javascript from 'highlight.js/lib/languages/javascript';
+// import javascript from 'highlight.js/lib/languages/javascript';
 // hljs.registerLanguage('javascript', javascript);
 hljs.highlightAll();
 tips();

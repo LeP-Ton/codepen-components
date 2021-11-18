@@ -52,7 +52,7 @@ export default class Step extends HTMLElement {
   static get observedAttributes() {
     return ["text","stepPrefix"];
   }
-  attributeChangedCallback(name, oldVal, newVal) {
+  attributeChangedCallback() {
     this.render();
   }
   render() {

@@ -21,7 +21,7 @@ export default class Case extends HTMLElement {
     this.shadow = this.attachShadow({ mode: "open" });
     this.shadow.appendChild(template.content.cloneNode(true));
     this.$case = this.shadow.querySelector("case");
-    this.caseNodeList = document.getElementsByTagName("codepen-case");
+    this.caseNodeList = this.parentNode.getElementsByTagName("codepen-case");
     // this.caseIndex =
     //   Array.prototype.slice.call(this.caseNodeList).indexOf(this) + 1;
     this.indexShow==="true"||this.indexShow===null?this.caseIndex = Array.prototype.slice.call(this.caseNodeList).indexOf(this) + 1:this.caseIndex='';
@@ -48,7 +48,7 @@ export default class Case extends HTMLElement {
   static get observedAttributes() {
     return ["text","casePrefix"];
   }
-  attributeChangedCallback(name, oldVal, newVal) {
+  attributeChangedCallback() {
     this.render();
   }
   render() {
