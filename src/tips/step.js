@@ -12,7 +12,7 @@ template.innerHTML = `
       display: block;
       margin-top: 20px;
       font-size: 20px;
-      content: attr(stepPrefix) attr(stepIndex) "：" attr(text);
+      content: attr(stepPrefix) attr(stepIndex) attr(stepSuffix) attr(text);
     }
     step:last-child {
       border-bottom: none;
@@ -49,8 +49,14 @@ export default class Step extends HTMLElement {
   set indexShow(value){
     this.setAttribute("indexShow",value);
   }
+  get stepSuffix(){
+    return this.getAttribute("stepSuffix")
+  }
+  set stepSuffix(value){
+    this.setAttribute("stepSuffix",value)
+  }
   static get observedAttributes() {
-    return ["text","stepPrefix"];
+    return ["text","stepPrefix","stepSuffix","indexShow"];
   }
   attributeChangedCallback() {
     this.render();
@@ -60,6 +66,7 @@ export default class Step extends HTMLElement {
     this.$step.setAttribute("stepPrefix", this.stepPrefix||"step");
     this.$step.setAttribute("stepIndex", this.stepIndex);
     this.$step.setAttribute("indexShow",this.indexShow);
+    this.$step.setAttribute("stepSuffix",this.stepSuffix||"：")
     this.$step.innerHTML = this.innerHTML;
   }
 }

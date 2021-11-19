@@ -10,7 +10,7 @@ template.innerHTML = `
       margin-top: 30px;
       font-size: 30px;
       font-weight: bold;
-      content: attr(casePrefix) attr(caseIndex) "：" attr(text);
+      content: attr(casePrefix) attr(caseIndex) attr(caseSuffix) attr(text);
     }
     </style>
     <case></case>
@@ -45,8 +45,14 @@ export default class Case extends HTMLElement {
   set indexShow(value){
     this.setAttribute("indexShow",value);
   }
+  get caseSuffix(){
+    return this.getAttribute("caseSuffix")
+  }
+  set caseSuffix(value){
+    this.setAttribute("caseSuffix",value)
+  }
   static get observedAttributes() {
-    return ["text","casePrefix"];
+    return ["text","casePrefix","caseSuffix","indexShow"];
   }
   attributeChangedCallback() {
     this.render();
@@ -56,6 +62,7 @@ export default class Case extends HTMLElement {
     this.$case.setAttribute("casePrefix", this.casePrefix||"case");
     this.$case.setAttribute("caseIndex", this.caseIndex);
     this.$case.setAttribute("indexShow",this.indexShow);
+    this.$case.setAttribute("caseSuffix",this.caseSuffix||"：")
     this.$case.innerHTML = this.innerHTML;
   }
 }
