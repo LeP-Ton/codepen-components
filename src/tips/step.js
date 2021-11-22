@@ -29,7 +29,11 @@ export default class Step extends HTMLElement {
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this.$step = this._shadowRoot.querySelector("step");
     this.stepNodeList = this.parentNode.getElementsByTagName("codepen-step");
-    this.indexShow==="true"||this.indexShow===null?this.stepIndex = Array.prototype.slice.call(this.stepNodeList).indexOf(this) + 1:this.stepIndex='';
+    this.indexShow === "true" || this.indexShow === null
+      ? (this.stepIndex =
+          Array.prototype.slice.call(this.stepNodeList).indexOf(this) + 1)
+      : (this.stepIndex = "");
+    this.render();
   }
   get text() {
     return this.getAttribute("text");
@@ -37,36 +41,46 @@ export default class Step extends HTMLElement {
   set text(value) {
     this.setAttribute("text", value);
   }
-  get stepPrefix(){
+  get stepPrefix() {
     return this.getAttribute("stepPrefix");
   }
-  set stepPrefix(value){
-    this.setAttribute("stepPrefix",value);
+  set stepPrefix(value) {
+    this.setAttribute("stepPrefix", value);
   }
-  get indexShow(){
+  get indexShow() {
     return this.getAttribute("indexShow");
   }
-  set indexShow(value){
-    this.setAttribute("indexShow",value);
+  set indexShow(value) {
+    this.setAttribute("indexShow", value);
   }
-  get stepSuffix(){
-    return this.getAttribute("stepSuffix")
+  get stepSuffix() {
+    return this.getAttribute("stepSuffix");
   }
-  set stepSuffix(value){
-    this.setAttribute("stepSuffix",value)
+  set stepSuffix(value) {
+    this.setAttribute("stepSuffix", value);
   }
   static get observedAttributes() {
-    return ["text","stepPrefix","stepSuffix","indexShow"];
+    return ["text", "stepPrefix", "stepSuffix", "indexShow"];
   }
   attributeChangedCallback() {
     this.render();
   }
   render() {
+    function getParentAttr(attrName,This) {
+      let attrVal = This.parentNode.getAttribute(attrName);
+      if (attrVal === "null") {
+        attrVal = null;
+      }
+      if (attrVal === "undefined") {
+        attrVal = undefined;
+      }
+      return attrVal;
+    }
     this.$step.setAttribute("text", this.text);
-    this.$step.setAttribute("stepPrefix", this.stepPrefix||"step");
+    this.$step.setAttribute("stepPrefix", this.stepPrefix||getParentAttr("prefix",this) || "step");
     this.$step.setAttribute("stepIndex", this.stepIndex);
-    this.$step.setAttribute("indexShow",this.indexShow);
-    this.$step.setAttribute("stepSuffix",this.stepSuffix||"：")
+    this.$step.setAttribute("indexShow", this.indexShow);
+    this.$step.setAttribute("stepSuffix", this.stepSuffix || "：");
     this.$step.innerHTML = this.innerHTML;
   }
 }

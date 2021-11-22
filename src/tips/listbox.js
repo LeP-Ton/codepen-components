@@ -1,5 +1,10 @@
 const template = document.createElement("template");
 template.innerHTML = `
+    <style>
+      listbox{
+        display:block;
+      }
+    </style>
     <listbox></listbox>
 `;
 /**
@@ -11,39 +16,40 @@ export default class ListBox extends HTMLElement {
     this.shadow = this.attachShadow({ mode: "open" });
     this.shadow.appendChild(template.content.cloneNode(true));
     this.$listbox = this.shadow.querySelector("listbox");
+    this.render();
   }
-  get prefix(){
-    return this.getAttribute("prefix")
+  get prefix() {
+    return this.getAttribute("prefix");
   }
-  set prefix(value){
-    this.setAttribute("prefix",value)
+  set prefix(value) {
+    this.setAttribute("prefix", value);
   }
-  get suffix(){
-    return this.getAttribute("suffix")
+  get suffix() {
+    return this.getAttribute("suffix");
   }
-  set suffix(value){
-    this.setAttribute("suffix",value)
+  set suffix(value) {
+    this.setAttribute("suffix", value);
   }
-  get indexShow(){
-    return this.getAttribute("indexShow")
+  get indexShow() {
+    return this.getAttribute("indexShow");
   }
-  set indexShow(value){
-    this.setAttribute("indexShow",value)
+  set indexShow(value) {
+    this.setAttribute("indexShow", value);
   }
-  get system(){
-    return this.getAttribute("system")
+  get system() {
+    return this.getAttribute("system");
   }
-  set system(value){
-    this.setAttribute("system",value)
+  set system(value) {
+    this.setAttribute("system", value);
   }
-  get symbols(){
-    return this.getAttribute("symbols")
+  get symbols() {
+    return this.getAttribute("symbols");
   }
-  set symbols(value){
-    this.setAttribute("symbols",value)
+  set symbols(value) {
+    this.setAttribute("symbols", value);
   }
   static get observedAttributes() {
-    return ["prefix","suffix","indexShow","system","symbols"];
+    return ["prefix", "suffix", "indexShow", "system", "symbols"];
   }
   attributeChangedCallback() {
     this.render();
@@ -53,7 +59,7 @@ export default class ListBox extends HTMLElement {
     this.$listbox.setAttribute("suffix", this.suffix);
     this.$listbox.setAttribute("indexShow", this.indexShow);
     this.$listbox.setAttribute("system", this.system);
-    this.$listbox.setAttribute("symbols",this.symbols);
+    this.$listbox.setAttribute("symbols", this.symbols);
     this.$listbox.innerHTML = this.innerHTML;
   }
 }

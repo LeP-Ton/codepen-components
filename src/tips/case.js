@@ -24,8 +24,11 @@ export default class Case extends HTMLElement {
     this.caseNodeList = this.parentNode.getElementsByTagName("codepen-case");
     // this.caseIndex =
     //   Array.prototype.slice.call(this.caseNodeList).indexOf(this) + 1;
-    this.indexShow==="true"||this.indexShow===null?this.caseIndex = Array.prototype.slice.call(this.caseNodeList).indexOf(this) + 1:this.caseIndex='';
-
+    this.indexShow === "true" || this.indexShow === null
+      ? (this.caseIndex =
+          Array.prototype.slice.call(this.caseNodeList).indexOf(this) + 1)
+      : (this.caseIndex = "");
+    this.render();
   }
   get text() {
     return this.getAttribute("text");
@@ -33,36 +36,55 @@ export default class Case extends HTMLElement {
   set text(value) {
     this.setAttribute("text", value);
   }
-  get casePrefix(){
+  get casePrefix() {
     return this.getAttribute("casePrefix");
   }
-  set casePrefix(value){
-    this.setAttribute("casePrefix",value);
+  set casePrefix(value) {
+    this.setAttribute("casePrefix", value);
   }
-  get indexShow(){
+  get indexShow() {
     return this.getAttribute("indexShow");
   }
-  set indexShow(value){
-    this.setAttribute("indexShow",value);
+  set indexShow(value) {
+    this.setAttribute("indexShow", value);
   }
-  get caseSuffix(){
-    return this.getAttribute("caseSuffix")
+  get caseSuffix() {
+    return this.getAttribute("caseSuffix");
   }
-  set caseSuffix(value){
-    this.setAttribute("caseSuffix",value)
+  set caseSuffix(value) {
+    this.setAttribute("caseSuffix", value);
   }
   static get observedAttributes() {
-    return ["text","casePrefix","caseSuffix","indexShow"];
+    return ["text", "casePrefix", "caseSuffix", "indexShow"];
   }
   attributeChangedCallback() {
     this.render();
   }
   render() {
+    function getParentAttr(attrName,This) {
+      let attrVal = This.parentNode.getAttribute(attrName);
+      if (attrVal === "null") {
+        attrVal = null;
+      }
+      if (attrVal === "undefined") {
+        attrVal = undefined;
+      }
+      return attrVal;
+    }
     this.$case.setAttribute("text", this.text);
-    this.$case.setAttribute("casePrefix", this.casePrefix||"case");
+    this.$case.setAttribute(
+      "casePrefix",
+      this.casePrefix || getParentAttr("prefix",this) || "case"
+    );
     this.$case.setAttribute("caseIndex", this.caseIndex);
-    this.$case.setAttribute("indexShow",this.indexShow);
-    this.$case.setAttribute("caseSuffix",this.caseSuffix||"：")
+    this.$case.setAttribute(
+      "indexShow",
+      this.indexShow || getParentAttr("indexShow",this)
+    );
+    this.$case.setAttribute(
+      "caseSuffix",
+      this.caseSuffix || getParentAttr("suffix",this) || "："
+    );
     this.$case.innerHTML = this.innerHTML;
   }
 }
