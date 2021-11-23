@@ -66,21 +66,37 @@ export default class Step extends HTMLElement {
     this.render();
   }
   render() {
-    function getParentAttr(attrName,This) {
-      let attrVal = This.parentNode.getAttribute(attrName);
-      if (attrVal === "null") {
-        attrVal = null;
-      }
-      if (attrVal === "undefined") {
-        attrVal = undefined;
-      }
-      return attrVal;
+    function getParentAttr(attrName, This) {
+      if (This.parentNode.tagName === "LISTBOX") {
+        let attrVal = This.parentNode.getAttribute(attrName);
+        if (attrVal === "null") {
+          attrVal = null;
+        }
+        if (attrVal === "undefined") {
+          attrVal = undefined;
+        }
+        return attrVal;
+      } else return undefined;
     }
+    // 标题文本
     this.$step.setAttribute("text", this.text);
-    this.$step.setAttribute("stepPrefix", this.stepPrefix||getParentAttr("prefix",this) || "step");
+    // 序号前缀
+    this.$step.setAttribute(
+      "stepPrefix",
+      this.stepPrefix || getParentAttr("prefix", this) || "step"
+    );
+    // 序号计数
     this.$step.setAttribute("stepIndex", this.stepIndex);
-    this.$step.setAttribute("indexShow", this.indexShow);
-    this.$step.setAttribute("stepSuffix", this.stepSuffix || "：");
+    // 是否显示序号
+    this.$step.setAttribute(
+      "indexShow",
+      this.indexShow || getParentAttr("indexShow", this)
+    );
+    // 序号后缀
+    this.$step.setAttribute(
+      "stepSuffix",
+      this.stepSuffix || getParentAttr("suffix", this) || "："
+    );
     this.$step.innerHTML = this.innerHTML;
   }
 }

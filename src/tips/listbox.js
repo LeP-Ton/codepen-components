@@ -55,11 +55,11 @@ export default class ListBox extends HTMLElement {
     this.render();
   }
   render() {
-    this.$listbox.setAttribute("prefix", this.prefix);
-    this.$listbox.setAttribute("suffix", this.suffix);
-    this.$listbox.setAttribute("indexShow", this.indexShow);
-    this.$listbox.setAttribute("system", this.system);
-    this.$listbox.setAttribute("symbols", this.symbols);
+    this.$listbox.setAttribute("prefix", this.prefix);//序号前缀
+    this.$listbox.setAttribute("suffix", this.suffix);//序号后缀
+    this.$listbox.setAttribute("indexShow", this.indexShow);//是否显示序号
+    this.$listbox.setAttribute("system", this.system);//计数系统
+    this.$listbox.setAttribute("symbols", this.symbols);//计数符号
     this.$listbox.innerHTML = this.innerHTML;
   }
 }
