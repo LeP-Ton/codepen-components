@@ -36,20 +36,21 @@ export default class ListBox extends HTMLElement {
   set indexShow(value) {
     this.setAttribute("indexShow", value);
   }
-  get system() {
-    return this.getAttribute("system");
-  }
-  set system(value) {
-    this.setAttribute("system", value);
-  }
-  get symbols() {
-    return this.getAttribute("symbols");
-  }
-  set symbols(value) {
-    this.setAttribute("symbols", value);
-  }
+  // get system() {
+  //   return this.getAttribute("system");
+  // }
+  // set system(value) {
+  //   this.setAttribute("system", value);
+  // }
+  // get symbols() {
+  //   return this.getAttribute("symbols");
+  // }
+  // set symbols(value) {
+  //   this.setAttribute("symbols", value);
+  // }
   static get observedAttributes() {
-    return ["prefix", "suffix", "indexShow", "system", "symbols"];
+    // return ["prefix", "suffix", "indexShow", "system", "symbols"];
+    return ["prefix", "suffix", "indexShow"];
   }
   attributeChangedCallback() {
     this.render();
@@ -58,8 +59,8 @@ export default class ListBox extends HTMLElement {
     this.$listbox.setAttribute("prefix", this.prefix);//序号前缀
     this.$listbox.setAttribute("suffix", this.suffix);//序号后缀
     this.$listbox.setAttribute("indexShow", this.indexShow);//是否显示序号
-    this.$listbox.setAttribute("system", this.system);//计数系统
-    this.$listbox.setAttribute("symbols", this.symbols);//计数符号
+    // this.$listbox.setAttribute("system", this.system);//计数系统
+    // this.$listbox.setAttribute("symbols", this.symbols);//计数符号
     this.$listbox.innerHTML = this.innerHTML;
   }
 }

@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-<script defer src="main.js"></script></head>
-<body>
-    <codepen-case casePrefix='自定义例' indexShow='false' text='test'>
-        <codepen-step stepPrefix='自定义步骤' indexShow='false' text='hello'>
-            <style>
-                .ss{
-                    background-color: red;
-                }
-            </style>
-            <div class="ss">ssssss</div>
+  <script defer src="main.js"></script></head>
+  <body>
+    <codepen-listbox prefix="自定义例" symbols="chinese">
+      <codepen-case
+        casePrefix="自定义case"
+        caseSuffix="、"
+        indexShow="false"
+        text="test"
+      >
+        <codepen-step stepPrefix="自定义步骤" indexShow="false" text="hello">
+          <style>
+            .ss {
+              background-color: red;
+            }
+          </style>
+          <div class="ss">ssssss</div>
         </codepen-step>
-        <codepen-step text='hello'>
-            <pre>
-                <code class="javascript">
-                    function selectionSort(arr){
-                        var minIndex, temp, len = arr.length;
-                        for(var i=0; i < len; i++){
-                            minIndex = i;
-                            for(var j=i+1; j < len; j++){
-                                if(arr[j] < arr[minIndex]){
-                                    minIndex = j;
+        <codepen-step text="hello">
+          <pre>
+                    <code class="javascript">
+                        function selectionSort(arr){
+                            var minIndex, temp, len = arr.length;
+                            for(var i=0; i < len; i++){
+                                minIndex = i;
+                                for(var j=i+1; j < len; j++){
+                                    if(arr[j] < arr[minIndex]){
+                                        minIndex = j;
+                                    }
                                 }
+                                temp = arr[i];
+                                arr[i] = arr[minIndex];
+                                arr[minIndex] = temp;
                             }
-                            temp = arr[i];
-                            arr[i] = arr[minIndex];
-                            arr[minIndex] = temp;
+                            return arr;
                         }
-                        return arr;
-                    }
-                    var num = new Array;
-                    num = [1,5,2,8,4,9,3,0,4];
-                    console.log(selectionSort(num));
-                </code>
-            </pre>
-        </codepen-step>  
-    </codepen-case>   
-    <codepen-case text='test'></codepen-case> 
+                        var num = new Array;
+                        num = [1,5,2,8,4,9,3,0,4];
+                        console.log(selectionSort(num));
+                    </code>
+                </pre>
+        </codepen-step>
+      </codepen-case>
+      <codepen-case text="test"></codepen-case>
+    </codepen-listbox>
     <!-- <script type="module" src="./index.js"></script> -->
-</body>
+  </body>
 </html>
