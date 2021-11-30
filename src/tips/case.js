@@ -1,3 +1,4 @@
+import symbols from "./symbols";
 const template = document.createElement("template");
 template.innerHTML = `
     <style>
@@ -22,12 +23,12 @@ export default class Case extends HTMLElement {
     this.shadow.appendChild(template.content.cloneNode(true));
     this.$case = this.shadow.querySelector("case");
     this.caseNodeList = this.parentNode.getElementsByTagName("codepen-case");
+    this.nodeListIndex = Array.prototype.slice
+      .call(this.caseNodeList)
+      .indexOf(this);
     // this.caseIndex =
     //   Array.prototype.slice.call(this.caseNodeList).indexOf(this) + 1;
-    this.indexShow === "true" || this.indexShow === null
-      ? (this.caseIndex =
-          Array.prototype.slice.call(this.caseNodeList).indexOf(this) + 1)
-      : (this.caseIndex = "");
+    this.caseIndex = this.nodeListIndex + 1;
     this.render();
   }
   get text() {
@@ -81,7 +82,14 @@ export default class Case extends HTMLElement {
       this.casePrefix || getParentAttr("prefix", this) || "case"
     );
     // 序号计数
-    this.$case.setAttribute("caseIndex", this.caseIndex);
+    const symbolsVal = getParentAttr("symbols", this);
+    symbolsVal
+      ? (this.caseIndex = symbols(symbolsVal)[this.nodeListIndex])
+      : this.caseIndex;
+    this.$case.setAttribute(
+      "caseIndex",
+      this.indexShow === "true" || this.indexShow === null ? this.caseIndex : ""
+    );
     // 是否显示序号
     this.$case.setAttribute(
       "indexShow",
