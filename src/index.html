@@ -20,36 +20,111 @@
               background-color: red;
             }
           </style>
-          <div class="ss">ssssss</div>
+          <div class="underline">你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好
+            啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊</div>
+          <!-- <rough-notation showOnLoad type="highlight" color="#FF6d00">
+            <h2>WC Rough Notation</h2>
+          </rough-notation> -->
         </codepen-step>
         <codepen-step text="hello">
           <pre>
-                    <code class="javascript">
-                        function selectionSort(arr){
-                            var minIndex, temp, len = arr.length;
-                            for(var i=0; i < len; i++){
-                                minIndex = i;
-                                for(var j=i+1; j < len; j++){
-                                    if(arr[j] < arr[minIndex]){
-                                        minIndex = j;
-                                    }
-                                }
-                                temp = arr[i];
-                                arr[i] = arr[minIndex];
-                                arr[minIndex] = temp;
+            <code class="javascript">
+                function selectionSort(arr){
+                    var minIndex, temp, len = arr.length;
+                    for(var i=0; i < len; i++){
+                        minIndex = i;
+                        for(var j=i+1; j < len; j++){
+                            if(arr[j] < arr[minIndex]){
+                                minIndex = j;
                             }
-                            return arr;
                         }
-                        var num = new Array;
-                        num = [1,5,2,8,4,9,3,0,4];
-                        console.log(selectionSort(num));
-                    </code>
+                        temp = arr[i];
+                        arr[i] = arr[minIndex];
+                        arr[minIndex] = temp;
+                    }
+                    return arr;
+                }
+                var num = new Array;
+                num = [1,5,2,8,4,9,3,0,4];
+                console.log(selectionSort(num));
+            </code>
                 </pre>
         </codepen-step>
       </codepen-case>
-      <codepen-case text="test"></codepen-case>
-      <codepen-case text="test"></codepen-case>
-      <codepen-case text="test"></codepen-case>
+      <codepen-case text="test">
+        <codepen-step stepPrefix="自定义步骤" indexShow="false" text="hello">
+          <style>
+            .ss {
+              background-color: red;
+            }
+          </style>
+          <div class="underline">你好啊</div>
+          <!-- <rough-notation showOnLoad type="highlight" color="#FF6d00">
+            <h2>WC Rough Notation</h2>
+          </rough-notation> -->
+        </codepen-step>
+        <codepen-step text="hello">
+          <pre>
+            <code class="javascript">
+                function selectionSort(arr){
+                    var minIndex, temp, len = arr.length;
+                    for(var i=0; i < len; i++){
+                        minIndex = i;
+                        for(var j=i+1; j < len; j++){
+                            if(arr[j] < arr[minIndex]){
+                                minIndex = j;
+                            }
+                        }
+                        temp = arr[i];
+                        arr[i] = arr[minIndex];
+                        arr[minIndex] = temp;
+                    }
+                    return arr;
+                }
+                var num = new Array;
+                num = [1,5,2,8,4,9,3,0,4];
+                console.log(selectionSort(num));
+            </code>
+                </pre>
+        </codepen-step>
+      </codepen-case>
+      <codepen-case text="test">
+        <codepen-step stepPrefix="自定义步骤" indexShow="false" text="hello">
+          <style>
+            .ss {
+              background-color: red;
+            }
+          </style>
+          <div class="underline">ssssss</div>
+          <!-- <rough-notation showOnLoad type="highlight" color="#FF6d00">
+            <h2>WC Rough Notation</h2>
+          </rough-notation> -->
+        </codepen-step>
+        <codepen-step text="hello">
+          <pre>
+            <code class="javascript">
+                function selectionSort(arr){
+                    var minIndex, temp, len = arr.length;
+                    for(var i=0; i < len; i++){
+                        minIndex = i;
+                        for(var j=i+1; j < len; j++){
+                            if(arr[j] < arr[minIndex]){
+                                minIndex = j;
+                            }
+                        }
+                        temp = arr[i];
+                        arr[i] = arr[minIndex];
+                        arr[minIndex] = temp;
+                    }
+                    return arr;
+                }
+                var num = new Array;
+                num = [1,5,2,8,4,9,3,0,4];
+                console.log(selectionSort(num));
+            </code>
+                </pre>
+        </codepen-step>
+      </codepen-case>
     </codepen-listbox>
     <!-- <script type="module" src="./index.js"></script> -->
   </body>

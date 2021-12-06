@@ -2,20 +2,46 @@ const template = document.createElement("template");
 
 template.innerHTML = `
     <style>
-    pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{background:#222;color:#fff}.hljs-comment,.hljs-quote{color:#777}.hljs-built_in,.hljs-bullet,.hljs-deletion,.hljs-link,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-regexp,.hljs-symbol,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ab875d}.hljs-attribute,.hljs-name,.hljs-section,.hljs-selector-class,.hljs-selector-id,.hljs-title,.hljs-type{color:#9b869b}.hljs-addition,.hljs-keyword,.hljs-selector-tag,.hljs-string{color:#8f9c6c}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
-    step {
+      pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{background:#eaeef3;color:#00193a}.hljs-doctag,.hljs-keyword,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-strong,.hljs-title{font-weight:700}.hljs-comment{color:#738191}.hljs-addition,.hljs-built_in,.hljs-literal,.hljs-name,.hljs-quote,.hljs-section,.hljs-selector-class,.hljs-selector-id,.hljs-string,.hljs-tag,.hljs-title,.hljs-type{color:#0048ab}.hljs-attribute,.hljs-bullet,.hljs-deletion,.hljs-link,.hljs-meta,.hljs-regexp,.hljs-subst,.hljs-symbol,.hljs-template-variable,.hljs-variable{color:#4c81c9}.hljs-emphasis{font-style:italic}    step {
       display: block;
-      margin: 0 50px;
-      border-bottom: 1px solid;
+      margin-left:300px;
+      margin-bottom: 30px;
+      font-size:1.5em;
+      position:relative;
+      line-height:1.5em;
+      background:linear-gradient(-150deg,transparent 1.5em,whitesmoke 0);
+      padding:1.5em;
+      filter:drop-shadow(1px 1px 3px black);
     }
     step::before {
-      display: block;
-      margin-top: 20px;
-      font-size: 20px;
+      margin-bottom:10px;
+      padding: 10px;
+      display: inline-block;
+      background:#222222d1;
+      color:#fff;
+      border-radius: 5px;
+      font-size: 1em;
       content: attr(stepPrefix) attr(stepIndex) attr(stepSuffix) attr(text);
     }
-    step:last-child {
-      border-bottom: none;
+    step::after{
+      content:"";
+      position:absolute;
+      top:0;
+      right:0;
+      background:linear-gradient(to left bottom,transparent 50%,rgba(100,100,100) 0)100% 0 no-repeat;
+      width:1.73em;
+      height:3em;
+      transform:translateY(-1.3em) rotate(-30deg);
+      transform-origin:bottom right;//变形时固定三角形的右下角
+      border-bottom-left-radius:inherit;
+      box-shadow:-.2em .2em .3em -.1em rgba(0,0,0,.15);
+    }
+    .text{
+      background: linear-gradient(black 1px, transparent 0);
+    background-size: 100% 1.5em;
+    }
+    .hljs{
+      border-radius:5px;
     }
     </style>
     <step></step>

@@ -25,6 +25,8 @@
     "webpack-dev-server": "^4.3.0"
   },
   "dependencies": {
-    "highlight.js": "^11.3.1"
+    "highlight.js": "^11.3.1",
+    "rough-notation": "^0.5.1",
+    "vanilla-rough-notation": "^0.4.6"
   }
 }

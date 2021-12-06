@@ -5,12 +5,21 @@ template.innerHTML = `
     case{
       display: block;
       border-bottom: 2px solid;
+      position: relative;
+      padding: 30px 30px 0 30px;
     }
     case::before {
+      position: sticky;
+      top:30px;
+      width:250px;
       display: block;
-      margin-top: 30px;
+      float: left;
       font-size: 30px;
       font-weight: bold;
+      background: #222222;
+      padding: 10px;
+      border-radius:10px;
+      color: #fff;
       content: attr(casePrefix) attr(caseIndex) attr(caseSuffix) attr(text);
     }
     </style>
