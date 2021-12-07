@@ -9,9 +9,10 @@ template.innerHTML = `
       font-size:1.5em;
       position:relative;
       line-height:1.5em;
-      background:linear-gradient(-150deg,transparent 1.5em,whitesmoke 0);
+      background: #f5f5f5;
       padding:1.5em;
-      filter:drop-shadow(1px 1px 3px black);
+      border: 1px solid;
+      border-radius: 10px;
     }
     step::before {
       margin-bottom:10px;
@@ -22,19 +23,6 @@ template.innerHTML = `
       border-radius: 5px;
       font-size: 1em;
       content: attr(stepPrefix) attr(stepIndex) attr(stepSuffix) attr(text);
-    }
-    step::after{
-      content:"";
-      position:absolute;
-      top:0;
-      right:0;
-      background:linear-gradient(to left bottom,transparent 50%,rgba(100,100,100) 0)100% 0 no-repeat;
-      width:1.73em;
-      height:3em;
-      transform:translateY(-1.3em) rotate(-30deg);
-      transform-origin:bottom right;//变形时固定三角形的右下角
-      border-bottom-left-radius:inherit;
-      box-shadow:-.2em .2em .3em -.1em rgba(0,0,0,.15);
     }
     .text{
       background: linear-gradient(black 1px, transparent 0);
