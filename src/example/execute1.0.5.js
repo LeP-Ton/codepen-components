@@ -42,6 +42,8 @@ export default function execute (html,styles,time) {
       pre.scrollTop = pre.scrollHeight;
       writeStyleChar(message[index++]);
       return setTimeout(function () {
+          console.log('-------------------------',$("codepen-example"));
+
         return writeStyles(message, index, interval);
       }, interval);
     }
@@ -50,7 +52,6 @@ export default function execute (html,styles,time) {
   $("codepen-example").append(
     html
   );
-  console.log('-------------------------',$("codepen-example"));
 
   time = 50;
 
