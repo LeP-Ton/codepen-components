@@ -10,13 +10,18 @@ template.innerHTML = `
         border-radius:5px;
     }
 </style>
-<example></example>
+<example>
+    <button class="example-control"><i class="fas fa-camera"></i>播放</button>
+</example>
 `;
 export default class Example extends HTMLElement {
   constructor() {
     super();
-    this.shadow = this.attachShadow({ mode: "open" });
-    this.shadow.appendChild(template.content.cloneNode(true));
-    this.$example = this.shadow.querySelector("example");
+    // this.shadow = this.attachShadow({ mode: "open" });
+    this.appendChild(template.content.cloneNode(true));
+    this.$example = this.querySelector("example");
   }
+  // render(){
+  //   this.$example.innerHTML=this.innerHTML
+  // }
 }

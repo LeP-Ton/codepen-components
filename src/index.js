@@ -1,11 +1,15 @@
-import tips from "./tips/tips.js";
 import hljs from "highlight.js";
-import execute from "./example/execute1.0.5.js";
-
+import "@fortawesome/fontawesome-free/css/all.css";
+import Step from './list/step.js'
+import Case from './list/case.js';
+import ListBox from './list/listbox.js';
+import Example from './example/example.js';
 
 function main(){
     hljs.highlightAll();
-    tips();
-    execute();  
+    window.customElements.define('codepen-step', Step);
+    window.customElements.define('codepen-case', Case);
+    window.customElements.define('codepen-listbox', ListBox);
+    window.customElements.define('codepen-example', Example);
 }
 main()
