@@ -1,5 +1,4 @@
 import hljs from "highlight.js";
-import "@fortawesome/fontawesome-free/css/all.css";
 import Step from './list/step.js'
 import Case from './list/case.js';
 import ListBox from './list/listbox.js';
