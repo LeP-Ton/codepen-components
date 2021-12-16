@@ -1,5 +1,5 @@
 import $ from 'jquery';
-export default function execute (html,styles,time) {
+export default function execute (shadow,html,styles,time) {
   let openComment, writeStyleChar, writeStyles;
 
   styles =
@@ -10,46 +10,46 @@ export default function execute (html,styles,time) {
   writeStyleChar = function (which) {
     if (which === "/" && openComment === false) {
       openComment = true;
-      styles = $("#style-text").html() + which;
+      styles = $("#style-text",shadow).html() + which;
     } else if (which === "/" && openComment === true) {
       openComment = false;
-      styles = $("#style-text")
+      styles = $("#style-text",shadow)
         .html()
         .replace(/(\/[^\/]*\*)$/, '<em class="comment">$1/</em>');
     } else if (which === ":") {
-      styles = $("#style-text")
+      styles = $("#style-text",shadow)
         .html()
         .replace(/([a-zA-Z- ^\n]*)$/, '<em class="key">$1</em>:');
     } else if (which === ";") {
-      styles = $("#style-text")
+      styles = $("#style-text",shadow)
         .html()
         .replace(/([^:]*)$/, '<em class="value">$1</em>;');
     } else if (which === "{") {
-      styles = $("#style-text")
+      styles = $("#style-text",shadow)
         .html()
         .replace(/(.*)$/, '<em class="selector">$1</em>{');
     } else {
-      styles = $("#style-text").html() + which;
+      styles = $("#style-text",shadow).html() + which;
     }
-    $("#style-text").html(styles);
-    return $("#style-tag").append(which);
+    $("#style-text",shadow).html(styles);
+    return $("#style-tag",shadow).append(which);
   };
 
   writeStyles = function (message, index, interval) {
     let pre;
     if (index < message.length) {
       pre = document.getElementById("style-text");
-      pre.scrollTop = pre.scrollHeight;
+      // pre.scrollTop = pre.scrollHeight;
       writeStyleChar(message[index++]);
       return setTimeout(function () {
-          console.log('-------------------------',$("codepen-example"));
+          console.log('-------------------------',$("example",shadow));
 
         return writeStyles(message, index, interval);
       }, interval);
     }
   };
   html='  <style id="style-tag"></style>\n<span id="echo"></span>\n<span id="heart"><i></i></span>\n<pre id="style-text"></pre>'
-  $("codepen-example").append(
+  $("example",shadow).append(
     html
   );
 
