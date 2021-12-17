@@ -1,7 +1,7 @@
-import execute from './execute1.0.5';
+import execute from "./execute1.0.5";
 
-const play=require('../img/play.png');
-const pause=require('../img/pause.png');
+const play = require("../img/play.png");
+const pause = require("../img/pause.png");
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -25,9 +25,14 @@ template.innerHTML = `
       top:20px;
       left:20px;
     }
+    .demo-box{
+      width:100%;
+      height:100%;
+    }
 </style>
 <example>
     <button class="demo"></button>
+    <div class="demo-box"></div>
 </example>
 `;
 export default class Example extends HTMLElement {
@@ -36,29 +41,27 @@ export default class Example extends HTMLElement {
     this.shadow = this.attachShadow({ mode: "open" });
     this.shadow.appendChild(template.content.cloneNode(true));
     this.$example = this.shadow.querySelector("example");
-    this.$button=this.shadow.querySelector(".demo");
-    this.$button.style.backgroundImage=`url(${play})`;
-    this.state=false;
-    this.$button.addEventListener('click',()=>{
-      this.state=!this.state;
-      if(this.state){
-        this.$button.style.backgroundImage=`url(${pause})`
-        // 播放前初始化，清除example中的演示元素
-        this.init();
-        execute(this.shadow)
-        // 等待播放完毕后按钮图标重设为play
-        this.$button.style.backgroundImage=`url(${play})`
-      }else{
+    this.$button = this.shadow.querySelector(".demo");
+    this.$button.style.backgroundImage = `url(${play})`;
+    this.isplaying = false;
+    this.isplayed = false;
+    this.$button.addEventListener("click", async () => {
+      this.isplaying = !this.isplaying;
+      if (this.isplaying) {
+        this.$button.style.backgroundImage = `url(${pause})`;
+        // 再次播放前初始化，清除example中的演示元素
+        if (this.isplayed) {
+          this.shadow.querySelector(".demo-box").innerHTML="";
+        }
+        // 等待播放完毕后按钮图标重设为play,isplaying设置为false,isplayed设置为true
+        await execute(this.shadow);
+        this.$button.style.backgroundImage = `url(${play})`;
+        this.isplaying = false;
+        this.isplayed = true;
+      } else {
         // 暂停播放
-        this.$button.style.backgroundImage=`url(${play})`
+        this.$button.style.backgroundImage = `url(${play})`;
       }
-    })
-    // this.render();
+    });
   }
-  init(){
-
-  }
-  // render(){
-  //   this.$example.innerHTML=this.innerHTML
-  // }
 }

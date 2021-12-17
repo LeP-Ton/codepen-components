@@ -1,5 +1,5 @@
 import $ from 'jquery';
-export default function execute (shadow,html,styles,time) {
+export default async function execute (shadow,html,styles,time) {
   let openComment, writeStyleChar, writeStyles;
 
   styles =
@@ -41,21 +41,24 @@ export default function execute (shadow,html,styles,time) {
       pre = document.getElementById("style-text");
       // pre.scrollTop = pre.scrollHeight;
       writeStyleChar(message[index++]);
-      return setTimeout(function () {
-          console.log('-------------------------',$("example",shadow));
+      return new Promise((resolve,reject)=>{
+        setTimeout(function () {
+          console.log('-------------------------',$(".demo-box",shadow));
 
-        return writeStyles(message, index, interval);
+        resolve(writeStyles(message, index, interval));
       }, interval);
+      })
+      
     }
   };
   html='  <style id="style-tag"></style>\n<span id="echo"></span>\n<span id="heart"><i></i></span>\n<pre id="style-text"></pre>'
-  $("example",shadow).append(
+  $(".demo-box",shadow).append(
     html
   );
 
   time = 50;
 
-  writeStyles(styles, 0, time);
+  await writeStyles(styles, 0, time);
 
   /*
     Changelog:
